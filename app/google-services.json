@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "303574629426",
+    "project_id": "makiwarakickpower"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303574629426:android:5ad4c65c6affa24d",
+        "android_client_info": {
+          "package_name": "ru.i_fighter.makiwara1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdh5YLCQ4kyGJSlUBAvGqKSMQscN5KQgE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-89113256-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

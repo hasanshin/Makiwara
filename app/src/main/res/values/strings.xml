@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">KickPower</string>
+    <string name="settings_activity_name">Settings</string>
+    <string name="help_activity_name">Help</string>
+    <string name="activity_res_name">Results</string>
+    <string name="activity_lapa_name">KickPower Pad</string>
+
+    <string name="txtReaction"></string>
+    <string name="txtPower"></string>
+    <string name="txtTimePower"></string>
+    <string name="txtViewPairDev"></string>
+    <string name="txtKickPower">Power, kgF</string>
+    <string name="txtDimensPower">kgF</string>
+    <string name="txtTimeOfPower">KickSpeed, mSec</string>
+    <string name="txtKickSpeed">mSec</string>
+    <string name="txtWordReaction">Reaction, mSec</string>
+    <string name="txtDimensReaction">Timer</string>
+    <string name="txtSettings">Settings</string>
+    <string name="txtResults">Results</string>
+    <string name="txtDisconnect">Disconnect</string>
+    <string name="txtPairedDevices">Find Makiwara.KickPower</string>
+    <string name="txtClickSimulator">Click the device Makiwara to communicate with the simulator</string>
+    <string name="txtToastCharge">Charge is low! Charge the battery simulator!</string>
+    <string name="txtToastBtSettings">Activate the bluetooth connection in Settings!</string>
+    <string name="txtRoundTime">Round Time = </string>
+    <string name="txtNumberPunch">Number of Punch = </string>
+    <string name="txtMaxPower">Best Power = </string>
+    <string name="txtAverPower">Average Power = </string>
+    <string name="txtMinKickSpeed">Best KickSpeed = </string>
+    <string name="txtAverKickSpeed">Average KickSpeed = </string>
+    <string name="btnStart">Start</string>
+    <string name="btnStop">Stop</string>
+    <string name="txtOnReaction">Mode: Punch</string>
+    <string name="txtOffReaction">Mode: Reaction</string>
+    <string name="btnRes">Results</string>
+    <string name="txtMenuHelp">Help</string>
+    <string name="txtAverageReactionTime">Average Reaction Time = </string>
+
+</resources>

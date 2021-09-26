@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">KickPower</string>
+    <string name="settings_activity_name">Настройки</string>
+    <string name="help_activity_name">Инструкция</string>
+    <string name="activity_res_name">Результаты</string>
+    <string name="activity_lapa_name">KickPower Лапа</string>
+
+    <string name="txtReaction"></string>
+    <string name="txtPower"></string>
+    <string name="txtTimePower"></string>
+    <string name="txtViewPairDev"></string>
+    <string name="txtKickPower">Сила удара, кГс</string>
+    <string name="txtDimensPower">кГс</string>
+    <string name="txtTimeOfPower">Время удара, мСек</string>
+    <string name="txtKickSpeed">мСек</string>
+    <string name="txtWordReaction">Реакция, мСек</string>
+    <string name="txtDimensReaction">Таймер</string>
+    <string name="txtSettings">Настройки</string>
+    <string name="txtResults">Результаты</string>
+    <string name="txtDisconnect">Разъединить</string>
+    <string name="txtPairedDevices">Найти Makiwara.KickPower</string>
+    <string name="txtClickSimulator">Кликните на устройство Makiwara для запуска тренажера</string>
+    <string name="txtToastCharge">Пора зарядить аккумулятор на тренажере!</string>
+    <string name="txtToastBtSettings">Активируйте соединение Bluetooth в настройках!</string>
+    <string name="txtRoundTime">Время раунда = </string>
+    <string name="txtNumberPunch">Число ударов = </string>
+    <string name="txtMaxPower">Лучший удар = </string>
+    <string name="txtAverPower">Средний удар = </string>
+    <string name="txtMinKickSpeed">Лучшее время = </string>
+    <string name="txtAverKickSpeed">Среднее время удара = </string>
+    <string name="btnStart">Старт</string>
+    <string name="btnStop">Стоп</string>
+    <string name="txtOnReaction">Режим: Удар</string>
+    <string name="txtOffReaction">Режим: Реакция</string>
+    <string name="btnRes">Результаты</string>
+    <string name="txtMenuHelp">Помощь</string>
+    <string name="txtAverageReactionTime">Среднее время реакции = </string>
+</resources>
