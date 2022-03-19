@@ -93,8 +93,10 @@ public class SettingsActivity extends AppCompatActivity {
         {
             for(BluetoothDevice bt : pairedDevices)
             {
+                Toast.makeText(getApplicationContext(), "Bluetooth Device"+ bt.getAddress(), Toast.LENGTH_LONG).show();
 
                 list.add(bt.getName() + "\n" + bt.getAddress()); //Get the device's name and the address
+
             }
         }
         else
@@ -140,7 +142,7 @@ public class SettingsActivity extends AppCompatActivity {
 
             String info = ((TextView) v).getText().toString();
             String address = info.substring(info.length() - 17);
-
+            //Toast.makeText(getApplicationContext(), "Bluetooth Device"+ address, Toast.LENGTH_LONG).show();
 
 
             // Make an intent to start next activity.

@@ -66,6 +66,7 @@ public class PowerActivity extends AppCompatActivity {
 //-------------------------------------------------------------------
 //ОБЪЯВЛЯЕМ ПЕРЕМЕННЫЕ
 //----------------------------------------------------------------
+private BluetoothDevice mDevice;
 int packet_tick = 0;
     TextView txtPower, txtTimePower, txtReaction, txtKickPower;
     TextView txtTimeOfPower, txtWordReaction, txtDimensReaction, txtProm;
@@ -169,8 +170,8 @@ private android.hardware.Camera camera;
     private OutputStream mmOutStream;
 
     //SPP UUID. Look for it
-    //static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    //static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     //static final UUID myUUID = UUID.fromString  ("0000fe41-8e22-4541-9d4c-21edae82ed19");
     final int RECIEVE_MESSAGE = 1;        // Статус для Handler
     private ConnectedThread mConnectedThread;
@@ -1325,7 +1326,7 @@ turnOffFlash();
         finish(); //return to the first layout
 
     }
-//----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------
 //ConnectBT
 //-------------------------------------------------------------------------------------
     private class ConnectBT extends AsyncTask<Void, Void, Void>  // UI thread
@@ -1336,82 +1337,26 @@ turnOffFlash();
         protected void onPreExecute()
         {
             progress = ProgressDialog.show(PowerActivity.this, "Connecting...", "Please wait!!!");  //show a progress dialog
-            Log.i(TAG, "прогресс бар");
+
         }
 
         @Override
         protected Void doInBackground(Void... devices) //while the progress dialog is shown, the connection is done in background
         {
-            //Toast.makeText(getApplicationContext(), "я здесь  "+address, Toast.LENGTH_LONG).show();
-
-
-
             try
             {
+
                 if (btSocket == null || !isBtConnected)
                 {
-
-                    //Toast.makeText(getApplicationContext(), "я здесь  "+address, Toast.LENGTH_LONG).show();
                     myBluetooth = BluetoothAdapter.getDefaultAdapter();//get the mobile bluetooth device
-
-                    BluetoothDevice dispositivo = myBluetooth.getRemoteDevice(address);//connects to the device's address and checks if it's available
-                   // Log.i(TAG, "myBluetooth_______________________________________"+dispositivo);
-                    //btSocket = dispositivo.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
-                    //btSocket = dispositivo.createRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
-                    try {
-
-                        //BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-                        Method getUuidsMethod = BluetoothAdapter.class.getDeclaredMethod("getUuids", null);
-                        ParcelUuid[] uuids = (ParcelUuid[]) getUuidsMethod.invoke(myBluetooth, null);
-
-                        if(uuids != null) {
-
-                            for (ParcelUuid uuid : uuids) {
-                                //Log.i(TAG, "UUID PARSE================================");
-                                Log.i(TAG, "UUID: " + uuid.getUuid().toString());
-                            }
-                        }else{
-                            Log.i(TAG, "Uuids not found, be sure to enable Bluetooth!");
-                        }
-
-                    } catch (NoSuchMethodException e) {
-                        e.printStackTrace();
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    } catch (InvocationTargetException e) {
-                        e.printStackTrace();
-                    }
-                    String name = myBluetooth.getName();
-
-                    BluetoothServerSocket socket = myBluetooth.listenUsingRfcommWithServiceRecord("P2PSRV1", myUUID);
-
-                    Log.i(TAG, "socet_______________________________________"+  socket + "name "+ name);
-                    btSocket = socket.accept();
-
-                    myBluetooth.setName(name);
+                    mDevice = myBluetooth.getRemoteDevice(address);//connects to the device's address and checks if it's available
+                    // MY_UUID = mDevice.getUuids()[0].getUuid();
+                    // msg("MY_UUID    " + MY_UUID);
+                    btSocket = mDevice.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
                     BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
-
-
-
-
-
-
-                    try{
-
-                        Log.i(TAG, "name connection_______________________________________"+ name);
-                        //btSocket.connect();//start connection
-                        mConnectedThread = new ConnectedThread(btSocket);
-                        mConnectedThread.start();
-                    }catch (Exception e)
-                    {
-                        Log.i(TAG, "start connection_______________________________________");
-                        ConnectSuccess = false;//if the try failed, you can check the exception here
-                    }
-
-
-                    //mConnectedThread = new ConnectedThread(btSocket);
-                    //mConnectedThread.start();
-
+                    btSocket.connect();//start connection
+                    mConnectedThread = new ConnectedThread(btSocket);
+                    mConnectedThread.start();
                 }
                 if (isCancelled()) return null;
             }
@@ -1428,11 +1373,18 @@ turnOffFlash();
 
             if (!ConnectSuccess)
             {
+                //imageViewBluetooth.setVisibility(View.INVISIBLE);
+                //textViewBTstatus.setText("Соединения нет");
+                //textViewBTstatus.setVisibility(View.VISIBLE);
                 msg("Connection Failed. Try again.");
-                finish();
+                //finish();
             }
             else
             {
+                //Log.d("log", "Я ЗДЕСЬ 4");
+                //imageViewBluetooth.setVisibility(View.VISIBLE);
+                //textViewBTstatus.setText("Соединено");
+                //textViewBTstatus.setVisibility(View.VISIBLE);
                 msg("Connected.");
                 isBtConnected = true;
             }
